@@ -82,27 +82,30 @@ istioctl install --set profile=demo -y
 kubectl label namespace default istio-injection=enabled --overwrite
 
 
-### 3. Build Images into Minikube’s Docker
+### 3. Build Docker Images Inside Minikube
 
+# Point your shell to use Minikube's Docker daemon
 eval $(minikube docker-env)
 
+# Build microservice images
 docker build -t microservice-meshapp-backend:latest ./backend
 docker build -t microservice-meshapp-frontend-v1:latest ./frontend-v1
 docker build -t microservice-meshapp-frontend-v2:latest ./frontend-v2
 docker build -t microservice-meshapp-reviews:latest ./reviews
 
+# Load images into Minikube environment
 minikube image load microservice-meshapp-backend:latest
 minikube image load microservice-meshapp-frontend-v1:latest
 minikube image load microservice-meshapp-frontend-v2:latest
 minikube image load microservice-meshapp-reviews:latest
 
-
-### 4. Deploy Microservices
+### 4. Deploy Microservices to Kubernetes
 
 kubectl apply -f k8s/backend.yaml
 kubectl apply -f k8s/frontend-v1.yaml
 kubectl apply -f k8s/frontend-v2.yaml
 kubectl apply -f k8s/reviews.yaml
+
 
 ### 5. Apply Istio Routing
 
@@ -130,7 +133,7 @@ kubectl -n istio-system get svc istio-ingressgateway
 
 If NodePort is exposed:
 
-http://<minikube-ip>:<nodePort>
+[http://<minikube-ip>:<nodePort>](http://<minikube-ip>:<nodePort>)
 
 
 ### Option 2: Port-Forward
