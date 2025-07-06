@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: frontend
+spec:
+  hosts:
+  - "*"                # accept all hosts or put your domain here
+  gateways:
+  - meshapp-gateway    # must match the Gateway name you created
+  http:
+  - route:
+    - destination:
+        host: frontend
+        subset: v1
+      weight: 90
+    - destination:
+        host: frontend
+        subset: v2
+      weight: 10

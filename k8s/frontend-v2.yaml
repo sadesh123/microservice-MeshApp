@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-v2
+  labels:
+    app: frontend
+    version: v2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        version: v2
+    spec:
+      containers:
+      - name: frontend
+      # Replace this with your own image before deploying
+        image: microservice-meshapp-frontend-v2:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5001

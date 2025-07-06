@@ -1,0 +1,26 @@
+services:
+  frontend-v1:
+    build: ./frontend-v1
+    ports:
+      - "5001:5001"
+    depends_on:
+      - backend
+
+  frontend-v2:
+    build: ./frontend-v2
+    ports:
+      - "5004:5001"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    ports:
+      - "5002:5002"
+    depends_on:
+      - reviews
+
+  reviews:
+    build: ./reviews
+    ports:
+      - "5003:5003"

@@ -1,0 +1,31 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment files
+.env
+.env.*
+
+# Git & version control
+.git
+.gitignore
+
+# Local development
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test, coverage, and virtualenv
+*.test
+coverage/
+.tox/
+venv/
+env/
+ENV/
