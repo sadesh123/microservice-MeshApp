@@ -133,7 +133,7 @@ kubectl -n istio-system get svc istio-ingressgateway
 
 If NodePort is exposed:
 
-[http://<minikube-ip>:<nodePort>](http://<minikube-ip>:<nodePort>)
+http://minikube-ip:nodePort
 
 
 ### Option 2: Port-Forward
