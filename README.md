@@ -88,16 +88,16 @@ kubectl label namespace default istio-injection=enabled --overwrite
 eval $(minikube docker-env)
 
 # Build microservice images
-docker build -t microservice-meshapp-backend:latest ./backend
-docker build -t microservice-meshapp-frontend-v1:latest ./frontend-v1
-docker build -t microservice-meshapp-frontend-v2:latest ./frontend-v2
-docker build -t microservice-meshapp-reviews:latest ./reviews
+docker build -t <your-backend-image> ./backend
+docker build -t <your-frontend-v1-image> ./frontend-v1
+docker build -t <your-frontend-v2-image> ./frontend-v2
+docker build -t <your-reviews-image> ./reviews
 
 # Load images into Minikube environment
-minikube image load microservice-meshapp-backend:latest
-minikube image load microservice-meshapp-frontend-v1:latest
-minikube image load microservice-meshapp-frontend-v2:latest
-minikube image load microservice-meshapp-reviews:latest
+minikube image load <your-backend-image>:latest
+minikube image load <your-frontend-v1-image>:latest
+minikube image load <your-frontend-v2-image>:latest
+minikube image load <your-reviews-image>:latest
 
 ### 4. Deploy Microservices to Kubernetes
 
